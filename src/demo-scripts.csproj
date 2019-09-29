@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <RootNamespace>deck-to-spad-next</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="SPADInterfaces">
+            <SpecificVersion>False</SpecificVersion>
+            <HintPath>E:\SPAD.neXt\SPAD.Interfaces.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+</Project>

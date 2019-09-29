@@ -1,0 +1,37 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceRoot}/src"
+            },
+            "args": [
+                "build"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build test",
+            "dependsOn": ["clean-tests"],
+            "command": "dotnet",
+            "type": "process",
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceRoot}/tst"
+            },
+            "args": [
+                "test",
+                "${workspaceRoot}/tst",
+                "/p:CollectCoverage=true"
+
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
