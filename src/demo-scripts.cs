@@ -2,9 +2,6 @@
 using SPAD.neXt.Interfaces.Configuration;
 using SPAD.neXt.Interfaces.Events;
 using SPAD.neXt.Interfaces.Scripting;
-using System.Diagnostics;
-using System.Threading;
-using System.Text;
 using System.IO;
 using System;
 using Utility;
@@ -71,7 +68,7 @@ namespace DeckToSpadNext
         private static readonly string ON_VALUE_PATH = $@"{EVENTS_PATH}\demo\values\on.val";
         private string onValue = File.ReadAllText(ON_VALUE_PATH).Replace(Environment.NewLine, "");
 
-        private Events.FileContentConsumer eventConsumer;
+        private FileContentConsumer eventConsumer;
 
         /// <summary>
         /// Constructs a new instance of the DemoProvider class. Due to the fact that SPAD Next will instantiate this class,
@@ -79,7 +76,7 @@ namespace DeckToSpadNext
         /// </summary>
         public DemoProvider()
         {
-            eventConsumer = new Events.FileContentConsumer
+            eventConsumer = new FileContentConsumer
             .Builder()
             .WithActiveValueFile(ACTIVE_VALUE_PATH)
             .WithDefaultValue(offValue)
@@ -324,7 +321,6 @@ namespace Events
 /// </summary>
 namespace Utility
 {
-
     /// <summary>
     /// Identfies the threshold for logging. The threshold is used in order to determine
     /// when a log statement should actually be executed. Examples:
@@ -343,7 +339,7 @@ namespace Utility
     /// </summary>
     public class FileLogger
     {
-        private static readonly int MAX_LOG_FILE_SIZE_MEGABYTES = 1000;
+        private static readonly int MAX_LOG_FILE_SIZE_MEGABYTES = 25;
         private static readonly int MAX_LOG_FILE_RETENTION_TIME_HOURS = 12;
 
         private string logsFilePath;
